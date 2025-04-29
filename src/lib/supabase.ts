@@ -13,10 +13,9 @@ export type Task = {
 
 export type TaskInput = Omit<Task, 'id' | 'user_id' | 'created_at'>;
 
-// Supabase client will be initialized once the user connects to Supabase
-// through the Lovable integration
-const supabaseUrl = 'https://placeholder-url.supabase.co';
-const supabaseKey = 'placeholder-key';
+// Initialize Supabase client with the provided URL and anon key
+const supabaseUrl = 'https://bdtfghxofkkptzyqybxs.supabase.co';
+const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJkdGZnaHhvZmtrcHR6eXF5YnhzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDU5MDk5MzcsImV4cCI6MjA2MTQ4NTkzN30.6anROPuPDkfjyw07Q22pN_Z83rRljeYSFdlc0OGmiAM';
 
 export const supabase = createClient(supabaseUrl, supabaseKey);
 
