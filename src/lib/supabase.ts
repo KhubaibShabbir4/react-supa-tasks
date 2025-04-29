@@ -59,9 +59,22 @@ export async function getTasks() {
 }
 
 export async function createTask(task: TaskInput) {
+  // Get the current user before inserting the task
+  const { data: userData } = await supabase.auth.getUser();
+  
+  if (!userData?.user) {
+    return { 
+      data: null, 
+      error: { message: 'User not authenticated' } 
+    };
+  }
+  
   const { data, error } = await supabase
     .from('tasks')
-    .insert([task])
+    .insert([{
+      ...task,
+      user_id: userData.user.id
+    }])
     .select();
   
   return { data: data?.[0] as Task | null, error };
